@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{% block title%}Bem vindo, Cliente.{% endblock %}
+
+{% block main %}
+    
+<h1 class="texto-azul">Início</h1>
+<ul>
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+</ul>
+<h2>Saudação individual</h2>
+{% if turno == 'm' %}
+    Bom dia {{nome}}!
+{% elif turno == 't' %}
+    Boa tarde {{nome}}!
+{% elif turno == 'n' %}
+    Boa noite {{nome}}!
+{% else %}
+    Olá {{nome}}!
+{% endif %}
+
+<h2>Saudação do grupo</h2>
+<ul>
+{% for cliente in clientes %}    
+    <li>
+    {% if cliente.sexo == 'm' %}
+        Olá, Senhor  {{ cliente.nome }}!
+    {% elif cliente.sexo == 'f' %}
+        Olá, Senhora  {{ cliente.nome }}!
+    {% else %}
+        Olá,  {{ cliente.nome }}!
+    {% endif %}        
+    </li>
+{% endfor%}
+</ul>
+<button onclick="olaMundo();">Clique aqui</button>
+{% include 'footer.html' %}
+{% endblock %}
